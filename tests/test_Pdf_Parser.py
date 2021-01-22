@@ -10,7 +10,7 @@ def test_single_table():
     assert table_parsed_1[0]['file'] == filename
 
 
-def multi_table():
+def test_multi_table():
     parser = Parse_PDF()
     filename = "Test_multitable.pdf"
     table_parsed_1 = parser.parse_Entgelt(filename="./data/"+filename)
