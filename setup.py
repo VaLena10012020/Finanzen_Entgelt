@@ -6,7 +6,7 @@ from os.path import join, dirname, abspath
 def read_requirements(basename):
     reqs_file = join(dirname(abspath(__file__)), basename)
     with open(reqs_file) as f:
-        return [req.strip() for req in f.readlines() if "git" not in req]
+        return [req.strip() for req in f.readlines() if "git+https" not in req]
 
 
 required_packages = read_requirements('requirements.txt')
