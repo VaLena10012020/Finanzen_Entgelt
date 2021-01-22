@@ -5,9 +5,9 @@ from datetime import datetime
 from finanzen_base.Utils.MongoLogger import MongoLogger
 
 class PdfParser:
-    def __init__(self, MongoLogger=None):
-        if MongoLogger is not None:
-            self.MongoLogging = MongoLogger 
+    def __init__(self, mongoLogger: MongoLogger=None):
+        if mongoLogger is not None:
+            self.MongoLogging = mongoLogger
             self.MongoLogging.write_log('Initialised PDF Parser')
         else:
             self.MongoLogging = None
@@ -41,3 +41,4 @@ class PdfParser:
 
         # Return Output data as dict for further use in mongoDB
         return df_out.to_dict('records')
+

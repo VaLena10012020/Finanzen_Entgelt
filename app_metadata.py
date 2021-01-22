@@ -2,9 +2,9 @@ import os
 import sys
 import pandas as pd
 
-from Utils.MongoLogger import MongoLogger
-from Utils.OneDriveConnector import OneDriveConnector
-from Utils.credentials import credential
+from finanzen_base.Utils.MongoLogger import MongoLogger
+from finanzen_base.Utils.OneDriveConnector import OneDriveConnector
+from finanzen_base.Utils.credentials import credential
 
 
 if __name__ == '__main__':
