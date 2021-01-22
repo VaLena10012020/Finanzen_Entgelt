@@ -2,8 +2,7 @@ import time
 import os
 import sys
 
-
-from EntgeltUtils.pdf_parser import Parse_PDF
+from EntgeltUtils.pdf_parser import PdfParser
 from finanzen_base.Utils.MongoClasses import MongoConnect
 from finanzen_base.Utils.MongoLogger import MongoLogger
 from finanzen_base.Utils.OneDriveConnector import OneDriveConnector
@@ -23,7 +22,7 @@ if __name__ == '__main__':
     MongoLogging.write_start_log()
 
     # Initialise PDF_Parser
-    Parser = Parse_PDF(MongoLogging)
+    Parser = PdfParser(MongoLogging)
     
     # Initialise connection to database
     MongoConnection = MongoConnect(collect=APP_NAME)

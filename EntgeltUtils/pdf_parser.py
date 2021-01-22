@@ -2,9 +2,9 @@ from tabula import read_pdf
 import json
 import pandas as pd
 from datetime import datetime
-from Utils.MongoLogger import MongoLogger
+from finanzen_base.Utils.MongoLogger import MongoLogger
 
-class Parse_PDF:
+class PdfParser:
     def __init__(self, MongoLogger=None):
         if MongoLogger is not None:
             self.MongoLogging = MongoLogger 

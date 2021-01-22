@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t finanzen-entgelt -f Dockerferile.dev .
+ 
+script:
+  - docker run finanzen-entgelt pytest
