@@ -1,7 +1,7 @@
 from EntgeltUtils.pdf_parser import Parse_PDF
 
 
-def single_table():
+def test_single_table():
     parser = Parse_PDF()
     filename = "Test_1table.pdf"
     table_parsed_1 = parser.parse_Entgelt(filename="./data/"+filename)
