@@ -3,7 +3,9 @@ import pytest
 from EntgeltUtils.pdf_parser import PdfParser
 
 
-@pytest.mark.parametrize("filename", ["Test_1table.pdf", "Test_multitable.pdf"])
+@pytest.mark.parametrize("filename",
+                         ["Test_1table.pdf", "Test_multitable.pdf"]
+                         )
 def test_single_and_multi_table(filename):
     parser = PdfParser()
     table_parsed_1 = parser.parse_Entgelt(filename="../data/"+filename)
