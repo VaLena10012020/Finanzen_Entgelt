@@ -8,3 +8,14 @@ Build docker image with:
 ```
  docker build -t finanzen-entgelt -f Dockerfile.dev --build-arg GITHUB_TOKEN=${GITHUB_TOKEN} .
 ```
+
+## Testing
+Run tests local with:
+```
+pytest
+```
+
+or within docker image with:
+```
+docker run finanzen-entgelt pytest
+```
