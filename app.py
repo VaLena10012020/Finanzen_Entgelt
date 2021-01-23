@@ -53,7 +53,7 @@ if __name__ == '__main__':
             for pdf in list_pdfs:
                 con.download_file(id_of_file=files_in_cloud[pdf],
                                   name_of_file=pdf)
-                pdf_parsed_list = Parser.parse_Entgelt(pdf)
+                pdf_parsed_list = Parser.parse_entgelt(pdf)
                 MongoConnection.insert_dicts(pdf_parsed_list)
                 os.remove(pdf)
                 MongoLogging.write_log({'pdfs stored to database': pdf})

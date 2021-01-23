@@ -2,15 +2,16 @@ from tabula import read_pdf
 import pandas as pd
 from datetime import datetime
 
+
 class PdfParser:
-    def __init__(self, mongoLogger = None):
-        if mongoLogger is not None:
-            self.MongoLogging = mongoLogger
+    def __init__(self, mongologger=None):
+        if mongologger is not None:
+            self.MongoLogging = mongologger
             self.MongoLogging.write_log('Initialised PDF Parser')
         else:
             self.MongoLogging = None
 
-    def parse_Entgelt(self, filename):
+    def parse_entgelt(self, filename):
         # Read in pdf
         df = read_pdf(filename, multiple_tables=True, output_format="json",
                       pages='all')
