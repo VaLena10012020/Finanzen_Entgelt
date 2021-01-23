@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t finanzen-entgelt -f Dockerfile.dev .
+  - docker build -t finanzen-entgelt -f Dockerfile.dev --build-arg GITHUB_TOKEN=${GITHUB_TOKEN} .
  
 script:
   - docker run finanzen-entgelt pytest
