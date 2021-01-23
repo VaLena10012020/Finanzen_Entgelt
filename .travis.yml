@@ -1,9 +1,13 @@
 sudo: required
-services:
-  - docker
+language: python
+cache: pip
 
-before_install:
+install:
+  - pip install flake8
+
+before_script:
   - docker build -t finanzen-entgelt -f Dockerfile.dev --build-arg GITHUB_TOKEN=${GITHUB_TOKEN} .
- 
+
 script:
+  - flake8
   - docker run finanzen-entgelt pytest
