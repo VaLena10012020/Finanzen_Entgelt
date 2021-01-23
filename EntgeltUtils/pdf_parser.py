@@ -2,11 +2,8 @@ from tabula import read_pdf
 import pandas as pd
 from datetime import datetime
 
-from finanzen_base.Utils.MongoLogger import MongoLogger
-
-
 class PdfParser:
-    def __init__(self, mongoLogger: MongoLogger = None):
+    def __init__(self, mongoLogger = None):
         if mongoLogger is not None:
             self.MongoLogging = mongoLogger
             self.MongoLogging.write_log('Initialised PDF Parser')
