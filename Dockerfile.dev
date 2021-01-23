@@ -12,16 +12,17 @@ COPY . /app
 RUN python setup.py install
 
 # Install JVM
-RUN apt-get update --yes
-RUN apt-get upgrade --yes
-RUN apt-get install --yes default-jdk
-RUN apt-get clean --yes;
+RUN apt-get update --yes && \
+    apt-get upgrade --yes && \
+    apt-get install --yes default-jdk
+
 
 # Fix certificate issues
 RUN apt-get update && \
-    apt-get install ca-certificates-java && \
-    apt-get clean && \
+    apt-get install --yes ca-certificates-java && \
     update-ca-certificates -f;
+
+RUN apt-get clean --yes
 
 # Setup JAVA_HOME -- useful for docker commandline
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
