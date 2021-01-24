@@ -11,3 +11,10 @@ before_script:
 script:
   - flake8
   - docker run finanzen-entgelt pytest
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: ./deployment/build_push_image.sh
+  on:
+    all_branches: true
