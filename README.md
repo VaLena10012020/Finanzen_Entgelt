@@ -2,6 +2,7 @@
 Parse Entgelt files
 
 [![Build Status](https://travis-ci.com/VaLena10012020/Finanzen_Entgelt.svg?branch=main)](https://travis-ci.com/VaLena10012020/Finanzen_Entgelt)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 ## Development
 Build docker image with:
