@@ -9,7 +9,7 @@ Build docker image with:
  docker build -t finanzen-entgelt -f Dockerfile.dev --build-arg GITHUB_TOKEN=${GITHUB_TOKEN} .
 ```
 
-## Testing
+## Testing and code quality
 Run tests local with:
 ```
 pytest
@@ -18,4 +18,10 @@ pytest
 or within docker image with:
 ```
 docker run finanzen-entgelt pytest
+```
+
+flake8 is implemented as a pre-commit hook. Hence, it is automatically conducted 
+upon each commit. In addition, it is possible to trigger linting manually with the following command:
+```
+pre-commit run --all-files
 ```
