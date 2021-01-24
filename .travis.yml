@@ -17,4 +17,4 @@ deploy:
   provider: script
   script: ./deployment/build_push_image.sh
   on:
-    all_branches: true
+    all_branches: true # TODO: change to master
