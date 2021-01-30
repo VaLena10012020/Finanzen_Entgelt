@@ -3,6 +3,7 @@ language: python
 cache: pip
 
 install:
+  - pip install awscli
   - pip install flake8
 
 before_script:
@@ -15,6 +16,8 @@ script:
 deploy:
   skip_cleanup: true
   provider: script
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
   script: ./build_push_image.sh
   on:
     all_branches: true
