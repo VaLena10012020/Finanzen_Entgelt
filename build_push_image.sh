@@ -10,7 +10,7 @@ echo "=== Get latest docker image ==="
 : ${REPOSITORY=valena}
 
 # login to aws ecr
-aws --region us-east-2 ecr get-login-password | docker login --username AWS --password-stdin ${REGISTRY}
+docker login -u AWS -p $(aws --region us-east-2 ecr get-login-password) ${REGISTRY}
 
 # get latest docker image for caching if available
 docker pull ${REGISTRY}/${REPOSITORY}:main || true
