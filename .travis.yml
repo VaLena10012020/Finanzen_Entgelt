@@ -10,8 +10,7 @@ before_script:
   - docker build -t finanzen-entgelt -f Dockerfile.dev \
       --build-arg GITHUB_TOKEN=${GITHUB_TOKEN} \
       --build-arg ECR_REGISTRY=${ECR_REGISTRY} \
-      --build-arg ECR_REPOSITORY=${ECR_REPOSITORY} \
-      .
+      --build-arg ECR_REPOSITORY=${ECR_REPOSITORY} .
 
 script:
   - flake8
