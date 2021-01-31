@@ -9,6 +9,7 @@ install:
 before_script:
   - aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}
   - aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
+  - docker login -u AWS -p $(aws --region us-east-2 ecr get-login-password) ${ECR_REGISTRY}
   - docker build -t finanzen-entgelt -f Dockerfile --build-arg GITHUB_TOKEN=${GITHUB_TOKEN} --build-arg ECR_REGISTRY=${ECR_REGISTRY} --build-arg ECR_REPOSITORY=${ECR_REPOSITORY} .
 
 script:
