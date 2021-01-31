@@ -5,8 +5,6 @@ set -x # print all executed commands (=debug mode)
 
 
 echo "=== Get latest docker image ==="
-# login to aws ecr
-docker login -u AWS -p $(aws --region us-east-2 ecr get-login-password) ${ECR_REGISTRY}
 
 # get latest docker image for caching if available
 docker pull ${ECR_REGISTRY}/${ECR_REPOSITORY}:main || true
