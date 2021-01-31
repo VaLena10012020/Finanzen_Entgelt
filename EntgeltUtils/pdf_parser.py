@@ -37,5 +37,5 @@ class PdfParser:
         # Set Name of File
         df_out["file"] = filename.split("/")[-1]
 
-        # Return Output data as dict for further use in mongoDB
-        return df_out.to_dict('records')
+        # Return Output data as dataframe for further use in mongoDB
+        return df_out
