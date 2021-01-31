@@ -1,6 +1,0 @@
-git+https://${GITHUB_TOKEN}:x-oauth-basic@github.com/VaLena10012020/Finanzen_python_base.git@1_enhance_package#egg=finanzen_base
-pandas == 1.2.1
-pytest == 6.2.1
-tabula-py == 2.2.0
-pre-commit==2.9.3
-flake8==3.8.4

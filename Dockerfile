@@ -1,30 +1,24 @@
-FROM python
+ARG ECR_REGISTRY
+ARG ECR_REPOSITORY
+FROM ${ECR_REGISTRY}/${ECR_REPOSITORY}:pyjava AS base
 
-ENV PYTHONPATH=/app
-WORKDIR /app
+FROM base as builder
+
+WORKDIR /tmp
+
+COPY . .
 
 ARG GITHUB_TOKEN
-COPY requirements.txt /app/
-RUN pip install -r requirements.txt
 
-COPY . /app
+RUN pip install --prefix=/install .
 
-RUN python setup.py install
+FROM base
 
-# Install JVM
-RUN apt-get update --yes && \
-    apt-get upgrade --yes && \
-    apt-get install --yes default-jdk
+COPY --from=builder /install /usr/local
 
+WORKDIR /app/
 
-# Fix certificate issues
-RUN apt-get update && \
-    apt-get install --yes ca-certificates-java && \
-    update-ca-certificates -f;
+COPY app.py .
 
-RUN apt-get clean --yes
-
-# Setup JAVA_HOME -- useful for docker commandline
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
-RUN export JAVA_HOME
+CMD ["python", "app.py"]
 
