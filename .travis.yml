@@ -7,10 +7,7 @@ install:
   - pip install flake8
 
 before_script:
-  - docker build -t finanzen-entgelt -f Dockerfile.dev \
-      --build-arg GITHUB_TOKEN=${GITHUB_TOKEN} \
-      --build-arg ECR_REGISTRY=${ECR_REGISTRY} \
-      --build-arg ECR_REPOSITORY=${ECR_REPOSITORY} .
+  - docker build -t finanzen-entgelt -f Dockerfile --build-arg GITHUB_TOKEN=${GITHUB_TOKEN} --build-arg ECR_REGISTRY=${ECR_REGISTRY} --build-arg ECR_REPOSITORY=${ECR_REPOSITORY} .
 
 script:
   - flake8
