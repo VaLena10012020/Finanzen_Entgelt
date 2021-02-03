@@ -41,7 +41,6 @@ def test_app_init(s3_client, s3_test, bucket_name):
               bucket_source=bucket_source,
               bucket_target=bucket_target,
               name='Entgelt')
-    # Initialise PDF_Parser
     assert app.con.list_objects(bucket_name) == []
 
 
