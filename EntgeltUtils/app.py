@@ -9,7 +9,7 @@ class App:
     def __init__(self, bucket_name: str = "valena1databucket",
                  bucket_source: str = "files/Entgelt/Audi",
                  bucket_target: str = "database/raw/Entgelt/Audi/",
-                 APP_NAME: str = 'Entgelt',
+                 name: str = 'Entgelt',
                  params: str = None):
         self.bucket_name = bucket_name
         self.bucket_source = bucket_source
