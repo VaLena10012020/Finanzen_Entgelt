@@ -11,7 +11,7 @@ class PdfParser:
         else:
             self.MongoLogging = None
 
-    def parse_entgelt(self, filename):
+    def parse_entgelt(self, filename: str) -> pd.DataFrame:
         # Read in pdf
         df = read_pdf(filename, multiple_tables=True, output_format="json",
                       pages='all')
@@ -37,5 +37,5 @@ class PdfParser:
         # Set Name of File
         df_out["file"] = filename.split("/")[-1]
 
-        # Return Output data as dict for further use in mongoDB
-        return df_out.to_dict('records')
+        # Return Output data as dataframe for further use in mongoDB
+        return df_out
