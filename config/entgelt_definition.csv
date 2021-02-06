@@ -1,0 +1,3 @@
+parser_type, search_column, target_column, search_str, split, output_float
+date, type, None, Überweisung zum, None, False
+brutto, "4", Gesamtbrutto, value, None, True
