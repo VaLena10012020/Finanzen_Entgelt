@@ -22,7 +22,7 @@ def parse_entgelt(filename: str) -> pd.DataFrame:
     df_out.columns = ["type", "1", "2", "3", "4", "value2", "value", "7"]
 
     # read schema definitions
-    schema_defintion = OmegaConf.load("/home/valentin/Projekte/VaLena/Finanzen_Entgelt/conf/entgelt_valentin.yaml")
+    schema_defintion = OmegaConf.load("conf/entgelt_valentin.yaml")
     df_dict = {}
 
     # Get date of Entgelt via row "Überweisung zum EndOfMonth"

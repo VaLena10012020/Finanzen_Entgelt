@@ -1,6 +1,7 @@
 import pytest
 import os
-import pandas as pd
+import json
+
 from boto3 import client
 from moto import mock_s3
 
@@ -60,15 +61,17 @@ def test_app_integration(s3_client, s3_test, bucket_name):
         # Check if original file are still in S3 storage
         assert file in list(files_source.values())
         # Check if new file is at the desired place in S3
-        assert file[:-4]+".csv" in list(files_target.values())
+        assert file[:-4]+".json" in list(files_target.values())
         # Check if files are not longer stored locally
         assert file not in os.listdir()
-        assert file[:-4]+".csv" not in os.listdir()
+        assert file[:-4]+".json" not in os.listdir()
 
     # Check if files are parsed correctly
-    app.con.download_file(file_path=bucket_target+files[0][:-4]+".csv",
+    app.con.download_file(file_path=bucket_target+files[0][:-4]+".json",
                           target_path="")
-    df = pd.read_csv(files[0][:-4]+".csv")
-    df_test = pd.read_csv("tests/data/Test_1table.csv")
-    assert df.equals(df_test)
-    os.remove(files[0][:-4]+".csv")
+    with open(files[0][:-4]+".json") as json_file:
+        data = json.load(json_file)
+    with open("tests/data/Test_1table.json") as json_file:
+        data_test = json.load(json_file)
+    assert data == data_test
+    os.remove(files[0][:-4]+".json")
