@@ -1,8 +1,9 @@
 import os
+import json
 
 from finanzen_base.Utils.s3connector import S3Connector
 from finanzen_base.Utils.extract_filename import extract_filename
-from EntgeltUtils.pdf_parser import PdfParser
+from EntgeltUtils.pdf_parser import parse_entgelt
 
 
 class App:
@@ -14,7 +15,6 @@ class App:
         self.bucket_source = bucket_source
         self.bucket_target = bucket_target
         self.name = name
-        self.Parser = PdfParser()
         self.con = S3Connector(bucket_name=self.bucket_name)
         self.f_unparsed = {}
 
@@ -34,10 +34,10 @@ class App:
             temp_file_name = "temp_file"
             for pdf in self.f_unparsed:
                 self.con.download_file(file_path=pdf)
-                pdf_parsed_df = self.Parser.parse_entgelt(filename=self.f_unparsed[pdf]+".pdf")
-                pdf_parsed_df.to_csv(temp_file_name)
-
-                file_upload_name = self.bucket_target+self.f_unparsed[pdf]+".csv"
+                pdf_parsed_df = parse_entgelt(filename=self.f_unparsed[pdf]+".pdf")
+                with open(temp_file_name, "w") as fp:
+                    json.dump(pdf_parsed_df, fp)
+                file_upload_name = self.bucket_target+self.f_unparsed[pdf]+".json"
                 self.con.upload_file(file_path=temp_file_name,
                                      target_path=file_upload_name)
                 os.remove(self.f_unparsed[pdf]+".pdf")
