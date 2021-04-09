@@ -13,7 +13,7 @@ docker pull ${ECR_REGISTRY}/${ECR_REPOSITORY}:main || true
 echo "=== Build new docker image ==="
 
 docker build --pull=true --cache-from ${ECR_REGISTRY}/${ECR_REPOSITORY}:main \
-  -t ${ECR_REGISTRY}/${ECR_REPOSITORY}:${TRAVIS_BRANCH} \
+  -t ${ECR_REGISTRY}/${ECR_REPOSITORY}:$entgelt_{TRAVIS_BRANCH} \
   --build-arg ECR_REGISTRY=${ECR_REGISTRY} --build-arg ECR_REPOSITORY=${ECR_REPOSITORY} .
 
 # to do add test script for docker image
