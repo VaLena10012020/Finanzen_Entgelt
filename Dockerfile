@@ -18,7 +18,7 @@ COPY --from=builder /install /usr/local
 
 WORKDIR /app/
 
-COPY main.py .
+COPY lambda_function.py .
 
 CMD ["python", "main.py"]
 

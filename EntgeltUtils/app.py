@@ -45,3 +45,6 @@ class App:
             return self.f_unparsed
         else:
             print("No new pdfs found")
+
+    def upload_parsed_files(self) -> None:
+        return
