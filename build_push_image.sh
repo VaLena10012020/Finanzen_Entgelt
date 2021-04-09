@@ -20,4 +20,4 @@ docker build --pull=true --cache-from ${ECR_REGISTRY}/${ECR_REPOSITORY}:main \
 
 echo "=== Push docker image ${TRAVIS_BRANCH} to AWS ECR ==="
 
-docker push ${ECR_REGISTRY}/${ECR_REPOSITORY}:${TRAVIS_BRANCH}
+docker push ${ECR_REGISTRY}/${ECR_REPOSITORY}:$entgelt_{TRAVIS_BRANCH}
