@@ -1,0 +1,22 @@
+date:
+  search_column: type
+  target_column: null
+  search_str: Überweisung zum
+  split: "Überweisung zum "
+  output_float: False
+
+brutto:
+  search_column: "4"
+  target_column: value
+  search_str: Gesamtbrutto
+  split: null
+  output_float: True
+
+netto:
+  search_column: "4"
+  target_column: value
+  search_str: Auszahlungsbetrag
+  split: null
+  output_float: True
+
+
