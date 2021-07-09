@@ -72,7 +72,7 @@ def test_app_check_one_new(s3_client, s3_test, bucket_name):
     for file in files:
         s3_client.upload_file("tests/data/" + file, bucket_name, bucket_source+file)
     # Upload one parsed file
-    s3_client.upload_file("tests/data/Test_1table.csv", bucket_name, bucket_target+"Test_1table.csv")
+    s3_client.upload_file("tests/data/Test_1table.json", bucket_name, bucket_target+"Test_1table.json")
 
     app = App(bucket_name=bucket_name,
               bucket_source=bucket_source,
